@@ -1,26 +1,87 @@
-# Folder view configuration files
+# Build outputs
+out/
+dist/
+*.vsix
+
+# Dependencies
+node_modules/
+
+# VS Code test runner
+.vscode-test/
+.vscode-test.mjs
+
+# Editor/IDE files
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Test files (keep only essential ones)
+test_*.yml
+!test_enhanced_syntax.yml
+!test_fixes.yml
+
+# OS generated files
 .DS_Store
-Desktop.ini
-
-# Thumbnail cache files
+.DS_Store?
 ._*
-Thumbs.db
-
-# Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+ehthumbs.db
+Thumbs.db
 
-# Compiled Python files
-*.pyc
+# Temporary files
+*.tmp
+*.temp
 
-# Compiled C++ files
-*.out
-
-# Application specific files
-venv
-node_modules
-.sass-cache
-.vscode-test.mjs
-.vscode
-
-dist
+# Generated files
+*.map
+*.d.ts

@@ -1,0 +1,181 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Helmwave",
+  "scopeName": "source.helmwave",
+  "patterns": [
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#string-quoted-double"
+    },
+    {
+      "include": "#string-quoted-single"
+    },
+    {
+      "include": "#helmwave-urls"
+    },
+    {
+      "include": "#helmwave-chart-references"
+    },
+    {
+      "include": "#helmwave-properties"
+    },
+    {
+      "include": "#helmwave-root-keys"
+    },
+    {
+      "include": "#yaml-values"
+    },
+    {
+      "include": "#yaml-structure"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "patterns": [
+        {
+          "match": "#.*$",
+          "name": "comment.line.number-sign.helmwave"
+        }
+      ]
+    },
+    "string-quoted-double": {
+      "begin": "\"",
+      "end": "\"",
+      "name": "string.quoted.double.helmwave",
+      "patterns": [
+        {
+          "match": "\\\\.",
+          "name": "constant.character.escape.helmwave"
+        }
+      ]
+    },
+    "string-quoted-single": {
+      "begin": "'",
+      "end": "'",
+      "name": "string.quoted.single.helmwave",
+      "patterns": [
+        {
+          "match": "''",
+          "name": "constant.character.escape.helmwave"
+        }
+      ]
+    },
+    "helmwave-urls": {
+      "patterns": [
+        {
+          "match": "\\b(https?|oci|file)://[^\\s\"']+",
+          "name": "string.other.link.helmwave markup.underline.link.helmwave"
+        }
+      ]
+    },
+    "helmwave-chart-references": {
+      "patterns": [
+        {
+          "match": "\\b[a-z][a-z0-9-]*/[a-z][a-z0-9-]*\\b",
+          "name": "string.other.chart-reference.helmwave markup.italic.chart.helmwave"
+        }
+      ]
+    },
+    "helmwave-root-keys": {
+      "patterns": [
+        {
+          "match": "^\\s*(project|version|repositories|registries|releases|monitors|lifecycle|tags|values)\\s*(:)",
+          "captures": {
+            "1": {
+              "name": "entity.name.section.helmwave keyword.control.helmwave"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.helmwave"
+            }
+          }
+        }
+      ]
+    },
+    "helmwave-properties": {
+      "patterns": [
+        {
+          "match": "^\\s+\\s*(name|namespace|chart|url|host|version|src|dst|priority|username|password|timeout|interval)\\s*(:)",
+          "captures": {
+            "1": {
+              "name": "variable.other.property.helmwave support.type.property-name.helmwave"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.helmwave"
+            }
+          }
+        },
+        {
+          "match": "^\\s*-\\s*(name|namespace|chart|url|host|version|src|dst|priority|username|password|timeout|interval)\\s*(:)",
+          "captures": {
+            "1": {
+              "name": "variable.other.property.helmwave support.type.property-name.helmwave"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.helmwave"
+            }
+          }
+        },
+        {
+          "match": "\\s+(name|namespace|chart|url|host|version|src|dst|priority|username|password|timeout|interval)\\s*(:)",
+          "captures": {
+            "1": {
+              "name": "variable.other.property.helmwave support.type.property-name.helmwave"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.helmwave"
+            }
+          }
+        }
+      ]
+    },
+    "yaml-values": {
+      "patterns": [
+        {
+          "match": "\\b(true|false|yes|no|on|off)\\b",
+          "name": "constant.language.boolean.yaml.helmwave"
+        },
+        {
+          "match": "\\b(null|~)\\b",
+          "name": "constant.language.null.yaml.helmwave"
+        },
+        {
+          "match": "\\b\\d+(\\.\\d+)?([eE][+-]?\\d+)?\\b",
+          "name": "constant.numeric.yaml.helmwave"
+        },
+        {
+          "match": "\\b\\d+[smhd]\\b",
+          "name": "constant.numeric.duration.helmwave"
+        }
+      ]
+    },
+    "yaml-structure": {
+      "patterns": [
+        {
+          "match": "^\\s*(-)",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.entry.yaml.helmwave"
+            }
+          }
+        },
+        {
+          "match": "^\\s*([^\\s:]+)\\s*(:)(?!//)",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag.yaml.helmwave"
+            },
+            "2": {
+              "name": "punctuation.separator.key-value.yaml.helmwave"
+            }
+          }
+        },
+        {
+          "match": "[^\\s\"'\\[\\]{},:]+",
+          "name": "string.unquoted.yaml.helmwave"
+        }
+      ]
+    }
+  }
+}
