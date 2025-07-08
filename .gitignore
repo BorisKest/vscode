@@ -20,3 +20,7 @@ Thumbs.db
 venv
 node_modules
 .sass-cache
+.vscode-test.mjs
+.vscode
+
+dist
